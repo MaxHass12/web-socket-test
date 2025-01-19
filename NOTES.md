@@ -23,22 +23,7 @@
 
 - Here, the `Host` is the address of the websocket server and `Sec-WebSocket-Key` is base-64 encoded, 16-byte random values (All this as mentioned in the specs for WS Protocol).
 
-- The successful response by WS Server is
-
-- The request send by client to initiate the websocket handshake is
-
-```
-> GET / HTTP/1.1
-> Host: localhost:3001
-> User-Agent: curl/8.7.1
-> Accept: */*
-> Upgrade: websocket
-> Connection: Upgrade
-> Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-> Sec-WebSocket-Version: 13
-```
-
-- The response sent by client as a response for websocket handshake is
+- The successful response by WS Server in a WS handshake is
 
 ```
 < HTTP/1.1 101 Switching Protocols
