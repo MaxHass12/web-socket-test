@@ -12,12 +12,13 @@ app.use(express.static('dist'));
 
 const clients = new Set();
 
+const regex = /\(([^)]+)\)/;
+
 wss.on('connection', (ws, request) => {
-  const clientAgent = request.headers['user-agent'].split(' ')[0];
-  const clientOrigin = request.headers.origin;
+  const clientAgent = request.headers['user-agent'].match(regex)[0];
   const clientIp = request.socket.remoteAddress;
   const clientPort = request.socket.remotePort;
-  const clientDetails = `${clientOrigin} | ${clientIp}-${clientPort}-${clientAgent}`;
+  const clientDetails = `${clientIp} : ${clientPort} | ${clientAgent}`;
 
   clients.add(ws);
   console.log('New client connected', clientDetails);
